@@ -42,7 +42,6 @@ export function MobileNav({ pathname, className }: MobileNavProps) {
           <Link
             key={item.id}
             href={item.href}
-            prefetch={true}
             className={cn(
               "flex flex-col items-center justify-center gap-1.5 px-4 py-2 rounded-lg transition-colors min-w-[64px]",
               isActive
@@ -65,7 +64,6 @@ export function MobileNav({ pathname, className }: MobileNavProps) {
       })}
       <Link
         href="/about"
-        prefetch={true}
         className={cn(
           "flex flex-col items-center justify-center gap-1.5 px-4 py-2 rounded-lg transition-colors min-w-[64px]",
           pathname === "/about"
