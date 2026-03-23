@@ -1,5 +1,6 @@
 
 
+import { APP_ROOT } from "./editor/utils";
 
 export const desktop = {
     IsLocalFile: () => true,
@@ -184,7 +185,7 @@ export const desktop = {
     LoadFontBase64: (name: string) => {
         console.log("LoadFontBase64", name)
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `/v9.3.0.24-1/fonts/${name}`, false);
+        xhr.open("GET", `${APP_ROOT}/fonts/${name}`, false);
         xhr.send();
 
         let binary = '';

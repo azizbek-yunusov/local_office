@@ -2,41 +2,42 @@
   <img src="./public/logo.svg" width="120" height="120" alt="Office App Logo">
 </p>
 
-<h1 align="center">Office by ZIZIYI</h1>
+<h1 align="center">ZIZIYI Office</h1>
 
 <p align="center">
   <strong>一款现代化、本地优先的 Office 文档预览与编辑解决方案。</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.producthunt.com/products/serverless-web-office-by-ziziyi?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-serverless-web-office-by-ziziyi" target="_blank" rel="noopener noreferrer"><img alt="Serverless Web Office by ZIZIYI - Serverless Web Office: Private, In-Browser editing via WASM. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1067951&theme=light&t=1769359248898"></a>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-0.1.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/%E6%A1%86%E6%9E%B6-Next.js%2015-black.svg" alt="Framework">
   <img src="https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-AGPL%20v3-orange.svg" alt="License">
-  <a href="http://office.ziziyi.com/">
-    <img src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-office.ziziyi.com-blue.svg" alt="Website">
+  <a href="https://o.ziziyi.com/">
+    <img src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-o.ziziyi.com-blue.svg" alt="Website">
   </a>
 </p>
 
 <p align="center">
-  <a href="http://office.ziziyi.com/"><strong>🚀 在线演示</strong></a> | <span>中文版</span> | <a href="README.md">English</a>
+  <a href="https://o.ziziyi.com/"><strong>🚀 在线演示</strong></a> | <span>中文版</span> | <a href="README.md">English</a>
 </p>
 
 <p align="center">
   <strong>快速创建:</strong>
-  <a href="https://office.ziziyi.com/editor?new=docx">📄 Word 文档</a> | 
-  <a href="https://office.ziziyi.com/editor?new=xlsx">📊 Excel 表格</a> | 
-  <a href="https://office.ziziyi.com/editor?new=pptx">📽️ PowerPoint 幻灯片</a>
+  <a href="https://o.ziziyi.com/editor?new=docx">📄 Word 文档</a> | 
+  <a href="https://o.ziziyi.com/editor?new=xlsx">📊 Excel 表格</a> | 
+  <a href="https://o.ziziyi.com/editor?new=pptx">📽️ PowerPoint 幻灯片</a>
 </p>
 
 ---
 
 ## 🚀 概览
 
-**office.ziziyi.com** 是一款强大的 Web 应用程序，旨在为您提供在浏览器中直接查看和编辑 Office 文档（Word、Excel、PowerPoint）的无缝体验。它基于“本地优先”的设计理念，在提供桌面级编辑体验的同时，确保您的文档隐私和安全。
+**ZIZIYI Office** 是一款强大的 Web 应用程序，旨在为您提供在浏览器中直接查看和编辑 Office 文档（Word、Excel、PowerPoint）的无缝体验。它基于“本地优先”的设计理念，在提供桌面级编辑体验的同时，确保您的文档隐私和安全。
+
+### 🌍 访问选项
+
+- **亚太地区优化访问 ([o.ziziyi.com](https://o.ziziyi.com/))**：部署于 EdgeOne 平台。域名更简短易记，且在亚太地区（如中国、日本、新加坡等）网络连接速度更快。
+- **全球通用访问 ([office.ziziyi.com](https://office.ziziyi.com/))**：部署于 Cloudflare Pages 平台。建议亚太地区以外的用户使用。
 
 ## ✨ 核心特性
 

@@ -35,6 +35,10 @@ export class EditorServer {
     id: "uid",
     name: "Me",
   };
+  private client = {
+    buildVersion: "9.3.0",
+    buildNumber: 8,
+  };
   private participants: Participant[] = [];
   private syncChangesIndex = 0;
   private loadPromise: Promise<void> | null = null;
@@ -193,11 +197,18 @@ export class EditorServer {
     return url;
   }
 
+  setClient(info: Partial<typeof this.client>) {
+    this.client = {
+      ...this.client,
+      ...info,
+    };
+  }
+
   handleConnect({ socket }: { socket: MockSocket }) {
     console.log("connect: ", socket);
 
     this.socket = socket;
-    const { send, sessionId } = this;
+    const { send, sessionId, client } = this;
 
     this.participants = [
       {
@@ -227,8 +238,8 @@ export class EditorServer {
       type: "license",
       license: {
         type: 3,
-        buildNumber: 8,
-        buildVersion: "9.3.0",
+        buildNumber: client.buildNumber,
+        buildVersion: client.buildVersion,
         light: false,
         mode: 0,
         rights: 1,
@@ -247,18 +258,19 @@ export class EditorServer {
     this.socket = null;
   }
 
-  send(msg: any) {
+  send(...msg: any[]) {
     if (!this.socket) {
       console.error("Socket is not connected");
       return;
     }
-    this.socket.server.emit("message", msg);
+    console.log("[ws] >> ", ...msg);
+    this.socket.server.emit("message", ...msg);
   }
 
   async handleMessage(msg: any, ...args: unknown[]) {
-    console.log("[msg]: ", msg, args);
+    console.log("[ws] << ", msg, args);
 
-    const { send, sessionId, participants, user } = this;
+    const { send, sessionId, participants, user, client } = this;
     switch (msg.type) {
       case "auth":
         const changes: unknown[] = [];
@@ -275,8 +287,8 @@ export class EditorServer {
           //   changes: changes,
           //   changesIndex: 0,
           indexUser: 1,
-          buildVersion: "9.3.0",
-          buildNumber: 9,
+          buildVersion: client.buildVersion || "9.3.0",
+          buildNumber: client.buildNumber || 9,
           licenseType: 3,
           editorType: 2,
           mode: "edit",

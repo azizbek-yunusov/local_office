@@ -2,27 +2,23 @@
   <img src="./public/logo.svg" width="120" height="120" alt="Office App Logo">
 </p>
 
-<h1 align="center">Office by ZIZIYI</h1>
+<h1 align="center">ZIZIYI Office</h1>
 
 <p align="center">
   <strong>A modern, local-first Office document preview and editing solution.</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.producthunt.com/products/serverless-web-office-by-ziziyi?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-serverless-web-office-by-ziziyi" target="_blank" rel="noopener noreferrer"><img alt="Serverless Web Office by ZIZIYI - Serverless Web Office: Private, In-Browser editing via WASM. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1067951&theme=light&t=1769359248898"></a>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/framework-Next.js%2015-black.svg" alt="Framework">
   <img src="https://img.shields.io/badge/license-AGPL%20v3-orange.svg" alt="License">
-  <a href="http://office.ziziyi.com/">
+  <a href="https://office.ziziyi.com/">
     <img src="https://img.shields.io/badge/website-office.ziziyi.com-blue.svg" alt="Website">
   </a>
 </p>
 
 <p align="center">
-  <a href="http://office.ziziyi.com/"><strong>🚀 Live Demo</strong></a> | <a href="README.zh-CN.md">中文版</a> | <span>English</span>
+  <a href="https://office.ziziyi.com/"><strong>🚀 Live Demo</strong></a> | <a href="README.zh-CN.md">中文版</a> | <span>English</span>
 </p>
 
 <p align="center">
@@ -36,7 +32,12 @@
 
 ## 🚀 Overview
 
-**office.ziziyi.com** is a powerful web application designed to provide a seamless experience for viewing and editing Office documents (Word, Excel, PowerPoint) directly in your browser. Built with a "local-first" philosophy, it ensures your documents remain private and secure while providing a desktop-class editing experience.
+**ZIZIYI Office** is a powerful web application designed to provide a seamless experience for viewing and editing Office documents (Word, Excel, PowerPoint) directly in your browser. Built with a "local-first" philosophy, it ensures your documents remain private and secure while providing a desktop-class editing experience.
+
+### 🌍 Access Options
+
+- **Global ([office.ziziyi.com](https://office.ziziyi.com/))**: Hosted on Cloudflare Pages. Recommended for users outside the Asia-Pacific region.
+- **Asia-Pacific Optimized ([o.ziziyi.com](https://o.ziziyi.com/))**: Hosted on EdgeOne. Features a shorter, easier-to-remember domain and offers faster access for users in the Asia-Pacific region (e.g., China, Japan, Singapore).
 
 ## ✨ Key Features
 

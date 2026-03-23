@@ -95,7 +95,10 @@ export default function Page({ params }: { params: Promise<{}> }) {
     };
 
     const createEditor = () => {
-      editor = new window.DocsAPI.DocEditor("placeholder", {
+      server.setClient({
+        buildVersion: window.DocsAPI!.DocEditor.version(),
+      });
+      editor = new window.DocsAPI!.DocEditor("placeholder", {
         document: {
           fileType: doc.fileType,
           key: doc.key,
