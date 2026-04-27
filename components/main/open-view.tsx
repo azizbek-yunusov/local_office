@@ -30,6 +30,30 @@ export function OpenView() {
   const router = useRouter();
   const server = useAppStore((state) => state.server);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fileUrl = params.get("fileUrl");
+    const fileName = params.get("fileName");
+
+    if (fileUrl) {
+      // Server faylini fetch qilib, office-da ochish
+      const autoOpenFile = async () => {
+        try {
+          const response = await fetch(fileUrl);
+          const blob = await response.blob();
+          const file = new File([blob], fileName || "document", {
+            type: blob.type,
+          });
+          await server.open(file);
+          router.push("/editor");
+        } catch (err) {
+          console.error("Auto-open failed:", err);
+        }
+      };
+      autoOpenFile();
+    }
+  }, []);
+
   // Load recent files and templates on mount
   useEffect(() => {
     loadRecentFiles();
@@ -99,7 +123,7 @@ export function OpenView() {
 
   const handleFileSelectWithHandle = async (
     file: File,
-    handle?: FileSystemFileHandle,
+    handle?: FileSystemFileHandle
   ) => {
     // Only save files with FileHandle (can be reopened)
     if (handle) {
@@ -157,7 +181,7 @@ export function OpenView() {
                   type={type}
                   className={cn(
                     "transition-all duration-300",
-                    doc.hoverBgColor,
+                    doc.hoverBgColor
                   )}
                   iconClassName="group-hover:text-white"
                 />
@@ -191,7 +215,7 @@ export function OpenView() {
             >
               <div
                 className={cn(
-                  "aspect-16/10 rounded-lg border border-border dark:border-white/5 shadow-sm group-hover:shadow-md group-hover:border-primary/30 transition-all relative overflow-hidden bg-white dark:bg-zinc-900",
+                  "aspect-16/10 rounded-lg border border-border dark:border-white/5 shadow-sm group-hover:shadow-md group-hover:border-primary/30 transition-all relative overflow-hidden bg-white dark:bg-zinc-900"
                 )}
               >
                 <img
@@ -211,7 +235,7 @@ export function OpenView() {
                     "absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] font-bold uppercase z-10",
                     getDocConfig(tpl.type).color,
                     "dark:text-white dark:bg-primary/80",
-                    getDocConfig(tpl.type).lightBgColor,
+                    getDocConfig(tpl.type).lightBgColor
                   )}
                 >
                   {tpl.type}
