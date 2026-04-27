@@ -19,9 +19,11 @@ function resolveLanguage(language: Language): Locale {
     const browserLang =
       typeof navigator !== "undefined"
         ? navigator.language || (navigator as any).userLanguage
-        : "en";
-    return standardizeLocale(browserLang || "en");
+        : "ru";
+
+    return standardizeLocale("ru");
   }
+
   return language as Locale;
 }
 
@@ -36,7 +38,7 @@ interface AppState {
 
   // Actions
   setState: (
-    state: Partial<Pick<AppState, "language" | "theme" | "plugins">>,
+    state: Partial<Pick<AppState, "language" | "theme" | "plugins">>
   ) => void;
 }
 
@@ -64,8 +66,8 @@ export const useAppStore = create<AppState>()(
         theme: state.theme,
         plugins: state.plugins,
       }),
-    },
-  ),
+    }
+  )
 );
 
 /**
@@ -80,7 +82,7 @@ export function useHasHydrated(): boolean {
       return unsub;
     },
     () => useAppStore.persist.hasHydrated(),
-    () => false, // SSR: always false
+    () => false // SSR: always false
   );
 }
 

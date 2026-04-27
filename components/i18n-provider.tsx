@@ -21,11 +21,11 @@ async function loadMessages(locale: Locale): Promise<AbstractIntlMessages> {
     return messages;
   } catch {
     // Fallback to English if locale file doesn't exist
-    if (locale !== Locale.EN) {
+    if (locale !== Locale.RU) {
       console.warn(
-        `Messages for locale "${locale}" not found, falling back to English`,
+        `Messages for locale "${locale}" not found, falling back to English`
       );
-      return loadMessages(Locale.EN);
+      return loadMessages(Locale.RU);
     }
     // Return empty object if even English fails
     return {};
@@ -43,9 +43,10 @@ interface I18nProviderProps {
  */
 export function I18nProvider({ children, initialMessages }: I18nProviderProps) {
   const locale = useResolvedLanguage();
+
   const [messages, setMessages] =
     useState<AbstractIntlMessages>(initialMessages);
-  const [currentLocale, setCurrentLocale] = useState<Locale>(Locale.EN);
+  const [currentLocale, setCurrentLocale] = useState<Locale>(Locale.RU);
 
   useEffect(() => {
     // Load messages when locale changes

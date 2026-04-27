@@ -2,7 +2,7 @@ import { Locale } from "@ziziyi/utils";
 import { getRequestConfig } from "next-intl/server";
 import { getTimeZone } from "./config";
 
-const defaultLocale = Locale.EN;
+const defaultLocale = Locale.RU;
 
 export default getRequestConfig(async () => {
   // const locale = (await requestLocale) || defaultLocale;
