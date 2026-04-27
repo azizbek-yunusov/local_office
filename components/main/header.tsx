@@ -45,10 +45,10 @@ export function Header({ children }: PropsWithChildren<{}>) {
     <header className="h-16 flex items-center justify-between px-6 z-20 w-full shrink-0">
       <div className="flex items-center gap-3">
         <div className="flex items-center justify-center">
-          <img src="/logo.svg" className="w-10 h-10" alt="logo" />
+          <img src="/logo_compact.webp" className="w-10 h-10" alt="logo" />
         </div>
         <h1 className="text-lg font-bold tracking-normal text-foreground leading-5 pt-1 text-justify [text-align-last:justify]">
-          {"ZIZIYI Office"}
+          {"Uzinkass Office"}
           <span className="block text-xs font-normal opacity-85 scale-[1] origin-top-left">
             Docs Sheets Slides
           </span>
@@ -64,7 +64,7 @@ export function Header({ children }: PropsWithChildren<{}>) {
             href={`/editor?new=${action.type}`}
             className={cn(
               "p-2 rounded-lg transition-all duration-200 flex items-center justify-center",
-              action.color,
+              action.color
             )}
             title={t("New {type}", { type: action.type })}
           >

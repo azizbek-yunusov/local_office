@@ -157,7 +157,7 @@ export function OpenView() {
   ];
 
   return (
-    <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500 ">
       <section>
         {/* File Picker Card for uploading files */}
         <FilePickerCard onFileSelectWithHandle={handleFileSelectWithHandle} />
@@ -191,61 +191,6 @@ export function OpenView() {
               </Link>
             );
           })}
-        </div>
-      </section>
-
-      {/* Common Templates */}
-      <section>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold">{t("Recommended")}</h2>
-          <button
-            onClick={() => router.push("/template")}
-            className="text-xs text-primary font-medium hover:underline"
-          >
-            {t("More templates")}
-          </button>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-          {templates.map((tpl, i) => (
-            <button
-              key={i}
-              className="flex flex-col gap-2 group text-left focus:outline-none"
-              onClick={() => handleTemplateClick(tpl)}
-              disabled={!!loadingTemplate}
-            >
-              <div
-                className={cn(
-                  "aspect-16/10 rounded-lg border border-border dark:border-white/5 shadow-sm group-hover:shadow-md group-hover:border-primary/30 transition-all relative overflow-hidden bg-white dark:bg-zinc-900"
-                )}
-              >
-                <img
-                  src={`/files/${encodeURIComponent(tpl.preview)}`}
-                  alt={tpl.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                />
-
-                {loadingTemplate === tpl.name && (
-                  <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] flex items-center justify-center z-20">
-                    <Loader2 className="w-6 h-6 text-white animate-spin" />
-                  </div>
-                )}
-
-                <div
-                  className={cn(
-                    "absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] font-bold uppercase z-10",
-                    getDocConfig(tpl.type).color,
-                    "dark:text-white dark:bg-primary/80",
-                    getDocConfig(tpl.type).lightBgColor
-                  )}
-                >
-                  {tpl.type}
-                </div>
-              </div>
-              <span className="text-xs font-semibold truncate group-hover:text-primary transition-colors">
-                {tpl.name}
-              </span>
-            </button>
-          ))}
         </div>
       </section>
 

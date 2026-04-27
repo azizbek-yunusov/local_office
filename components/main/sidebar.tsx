@@ -49,7 +49,6 @@ export function Sidebar({ pathname }: SidebarProps) {
 
   const sidebarItems = [
     { id: "open", label: t("Open"), icon: FolderOpen, href: "/" },
-    { id: "template", label: t("Template"), icon: Layout, href: "/template" },
   ];
 
   return (
@@ -83,7 +82,7 @@ export function Sidebar({ pathname }: SidebarProps) {
                       "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200",
                       // Light mode: use doc colors; Dark mode: use custom dark styles
                       doc.bgColor,
-                      "dark:bg-white/5 dark:hover:bg-white/10 dark:border dark:border-white/5",
+                      "dark:bg-white/5 dark:hover:bg-white/10 dark:border dark:border-white/5"
                     )}
                   >
                     <Icon
@@ -91,7 +90,7 @@ export function Sidebar({ pathname }: SidebarProps) {
                         "w-5 h-5",
                         doc.color,
                         // Ensure icons are vibrant in dark mode
-                        "dark:text-primary dark:filter dark:brightness-125",
+                        "dark:text-primary dark:filter dark:brightness-125"
                       )}
                     />
                     <span className="text-sm font-medium text-foreground dark:text-slate-200">
@@ -116,13 +115,13 @@ export function Sidebar({ pathname }: SidebarProps) {
                 "w-full flex items-center gap-3 px-3 py-2.5 rounded-md transition-colors text-sm font-medium",
                 isActive
                   ? "bg-primary/10 text-primary"
-                  : "text-foreground hover:bg-sidebar-hover hover:text-foreground",
+                  : "text-foreground hover:bg-sidebar-hover hover:text-foreground"
               )}
             >
               <item.icon
                 className={cn(
                   "w-5 h-5",
-                  isActive ? "text-primary" : "text-text-secondary",
+                  isActive ? "text-primary" : "text-text-secondary"
                 )}
               />
               {item.label}
@@ -138,34 +137,16 @@ export function Sidebar({ pathname }: SidebarProps) {
             "w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-md",
             pathname === "/settings"
               ? "bg-primary/10 text-primary"
-              : "text-text-secondary hover:text-foreground hover:bg-sidebar-hover",
+              : "text-text-secondary hover:text-foreground hover:bg-sidebar-hover"
           )}
         >
           <Settings
             className={cn(
               "w-5 h-5",
-              pathname === "/settings" ? "text-primary" : "text-text-secondary",
+              pathname === "/settings" ? "text-primary" : "text-text-secondary"
             )}
           />
           {t("Settings")}
-        </Link>
-
-        <Link
-          href="/about"
-          className={cn(
-            "w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-md",
-            pathname === "/about"
-              ? "bg-primary/10 text-primary"
-              : "text-text-secondary hover:text-foreground hover:bg-sidebar-hover",
-          )}
-        >
-          <Info
-            className={cn(
-              "w-5 h-5",
-              pathname === "/about" ? "text-primary" : "text-text-secondary",
-            )}
-          />
-          {t("About")}
         </Link>
       </div>
     </aside>
