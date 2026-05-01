@@ -1,4 +1,4 @@
-export const pluginsBase = "https://office-plugins.ziziyi.com/v9/sdkjs-plugins";
+export const pluginsBase = "/plugins";
 
 export const allPlugins = [
   "ai",
@@ -68,7 +68,7 @@ export function getPluginConfigUrl(name: string) {
 
 export function getPluginsData(list: string[]) {
   return {
-    url: "",
+    url: pluginsBase + "/",
     pluginsData: list.map(getPluginConfigUrl),
     autostart: [],
   };
