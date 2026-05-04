@@ -17,33 +17,33 @@ const withNextIntl = createNextIntlPlugin({
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: "export",
-  async headers() {
-    return [
-      {
-        source: "/x2t/x2t.wasm",
-        headers: [
-          {
-            key: "Content-Encoding",
-            value: "br",
-          },
-        ],
-      },
-      {
-        source: "/x2t-:suffix/:path*",
-        headers: [
-          {
-            key: "Content-Encoding",
-            value: "br",
-          },
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31556952, immutable",
-          },
-        ],
-      },
-    ];
-  },
+  // output: "export",
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/x2t/x2t.wasm",
+  //       headers: [
+  //         {
+  //           key: "Content-Encoding",
+  //           value: "br",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       source: "/x2t-:suffix/:path*",
+  //       headers: [
+  //         {
+  //           key: "Content-Encoding",
+  //           value: "br",
+  //         },
+  //         {
+  //           key: "Cache-Control",
+  //           value: "public, max-age=31556952, immutable",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 };
 
 export default withNextIntl(nextConfig);

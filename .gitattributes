@@ -1,2 +1,9 @@
 public/**/*.html linguist-vendored
 public/**/*.js linguist-vendored
+
+# Brotli-compressed binary fayllar — git CRLF konversiyasidan saqlash
+*.wasm binary
+public/x2t/*.wasm binary
+public/x2t-*/*.wasm binary
+public/x2t-*/*.js binary
+*.js.br binary

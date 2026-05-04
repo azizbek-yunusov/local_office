@@ -1,5 +1,5 @@
-:80 {
-    root * /srv
+:4000 {
+    root * /srv/projects/office
 
     # Serve static files; return a genuine 404 if the file doesn't exist
     # (do NOT fall back to index.html — Next.js static export has a real
@@ -36,3 +36,9 @@
     header @x2t_suffix Content-Encoding br
     header @x2t_suffix Cache-Control "public, max-age=31556952, immutable"
 }
+
+
+
+
+
+

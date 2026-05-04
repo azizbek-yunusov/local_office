@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4000",
     "lint": "eslint",
     "svgr": "npx @svgr/cli --out-dir components/svg --typescript -- public/svg",
     "pages:dev": "npx wrangler pages dev ./out",
-    "deploy": "pnpm build && npx wrangler pages deploy ./out --project-name=office-website",
-    "deploy:preview": "pnpm build && npx wrangler pages deploy ./out --project-name=office-website --branch=preview"
+    "deploy": "npm build && npx wrangler pages deploy ./out --project-name=office-website",
+    "deploy:preview": "npm build && npx wrangler pages deploy ./out --project-name=office-website --branch=preview"
   },
   "dependencies": {
     "@bprogress/next": "^3.2.12",
