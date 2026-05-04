@@ -1,5 +1,14 @@
+ARG DS_VERSION=9.3.1
+ARG HASH=1
+
 # ============================================================
-# Stage 2: Next.js build + assets
+# Stage 1: OnlyOffice assets
+# ============================================================
+FROM onlyoffice/documentserver:${DS_VERSION} AS documentserver
+RUN documentserver-generate-allfonts.sh false || true
+
+# ============================================================
+# Stage 2: Next.js build (static export)
 # ============================================================
 FROM node:22-alpine AS builder
 ARG DS_VERSION
@@ -15,38 +24,28 @@ COPY . .
 RUN npm run build
 
 # ============================================================
-# Stage 3: Next.js production server
+# Stage 3: Caddy static server
 # ============================================================
-FROM node:22-alpine AS final
+FROM caddy:2-alpine AS final
 ARG DS_VERSION
 ARG HASH
 
-ENV NODE_ENV=production
-ENV PORT=4000
-ENV NEXT_TELEMETRY_DISABLED=1
-
 WORKDIR /srv/projects/office
 
-COPY --from=builder /srv/projects/office/package.json ./
-COPY --from=builder /srv/projects/office/node_modules ./node_modules
-COPY --from=builder /srv/projects/office/.next ./.next
-COPY --from=builder /srv/projects/office/public ./public
-COPY --from=builder /srv/projects/office/next.config.ts ./
+COPY --from=builder /srv/projects/office/out ./
 
-# OnlyOffice assets -> public papkasiga
-COPY --from=documentserver /var/www/onlyoffice/documentserver/fonts         ./public/v${DS_VERSION}-${HASH}/fonts
-COPY --from=documentserver /var/www/onlyoffice/documentserver/sdkjs         ./public/v${DS_VERSION}-${HASH}/sdkjs
-COPY --from=documentserver /var/www/onlyoffice/documentserver/web-apps      ./public/v${DS_VERSION}-${HASH}/web-apps
-COPY --from=documentserver /var/www/onlyoffice/documentserver/sdkjs-plugins ./public/v${DS_VERSION}-${HASH}/sdkjs-plugins
+COPY --from=documentserver /var/www/onlyoffice/documentserver/fonts         ./v${DS_VERSION}-${HASH}/fonts
+COPY --from=documentserver /var/www/onlyoffice/documentserver/sdkjs         ./v${DS_VERSION}-${HASH}/sdkjs
+COPY --from=documentserver /var/www/onlyoffice/documentserver/web-apps      ./v${DS_VERSION}-${HASH}/web-apps
+COPY --from=documentserver /var/www/onlyoffice/documentserver/sdkjs-plugins ./v${DS_VERSION}-${HASH}/sdkjs-plugins
 
-# api.js
-RUN if [ ! -f "./public/v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/api.js" ]; then \
-  cp "./public/v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/api.js.tpl" \
-  "./public/v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/api.js"; \
+RUN if [ ! -f "./v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/api.js" ]; then \
+  cp "./v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/api.js.tpl" \
+  "./v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/api.js"; \
   fi
 
-RUN find "./public/v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/" -name "api.js" \
+RUN find "./v${DS_VERSION}-${HASH}/web-apps/apps/api/documents/" -name "api.js" \
   -exec sed -i "s|const ver = '[^']*'|const ver = ''|g" {} \;
 
+COPY Caddyfile /etc/caddy/Caddyfile
 EXPOSE 4000
-CMD ["node_modules/.bin/next", "start", "-p", "4000"]
